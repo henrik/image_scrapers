@@ -1,0 +1,9 @@
+Just click the thumbnail for a large image.
+
+Alternatively, take the URL of a small image, like:
+
+  http://www.kci.or.jp/archives/digital_archives/photos/33_l_AC07620.jpg
+
+And change the "l" to "xl":
+
+  http://www.kci.or.jp/archives/digital_archives/photos/33_xl_AC07620.jpg
