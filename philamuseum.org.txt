@@ -1,0 +1,9 @@
+Get the URL of the thumb, e.g.
+
+  http://www.philamuseum.org/images/cad/large/M1928-1-19.jpg
+
+Now replace the size with "zoomers":
+
+  http://www.philamuseum.org/images/cad/zoomers/M1928-1-19.jpg
+
+All done!
