@@ -8,7 +8,7 @@ require "fileutils"
 LOCAL_DIR = File.expand_path("~/Downloads")
 
 def download_index(url)
-  Nokogiri(open(url)).search("a.designer").each do |x|
+  Nokogiri(URI.open(url)).search("a.designer").each do |x|
     url = "http://www.fashionanthology.com/" + x[:href]
     name = x.text.gsub(/\s+/, " ").strip
     dir = LOCAL_DIR + "/" + name
@@ -18,7 +18,7 @@ def download_index(url)
 end
 
 def download_gallery(url, dir = LOCAL_DIR)
-  base_image_url = "http://www.fashionanthology.com/" + open(url).read[/"(image\.php.*?\.jpg)"/, 1]
+  base_image_url = "http://www.fashionanthology.com/" + URI.open(url).read[/"(image\.php.*?\.jpg)"/, 1]
   base_image_url.sub!("_m.jpg", ".jpg")
 
   1.upto(999) do |i|
@@ -28,7 +28,7 @@ def download_gallery(url, dir = LOCAL_DIR)
 
     puts local_name
 
-    data = open(image_url, "Referer" => "http://www.fashionanthology.com/").read
+    data = URI.open(image_url, "Referer" => "http://www.fashionanthology.com/").read
 
     if data.length == 0
       # No more images in this gallery.
