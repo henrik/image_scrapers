@@ -13,6 +13,7 @@ def download_index(url)
     name = x.text.gsub(/\s+/, " ").strip
     dir = LOCAL_DIR + "/" + name
     FileUtils.mkdir_p(dir)
+
     download_gallery(url, dir)
   end
 end
@@ -22,7 +23,9 @@ def download_gallery(url, dir = LOCAL_DIR)
   base_image_url.sub!("_m.jpg", ".jpg")
 
   1.upto(999) do |i|
-    image_url = base_image_url.sub("001.jpg", format("%03i.jpg", i))
+    digit_count = base_image_url[/(\d+)\.jpg/, 1].length
+    format_pattern = "%0#{digit_count}i.jpg"
+    image_url = base_image_url.sub(format(format_pattern, 1), format(format_pattern, i))
     local_name = image_url[/\|(.*)/, 1]
     image_url = image_url.sub!("|", "%7C")
 
